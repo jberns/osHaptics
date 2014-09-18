@@ -46,12 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\EulerRotationMod.cs" />
-     <Compile Include="Assets\FingerRotation1.cs" />
-     <Compile Include="Assets\FingerRotation2.cs" />
-     <Compile Include="Assets\FingerRotation3.cs" />
-     <Compile Include="Assets\FingerRotation4.cs" />
-     <Compile Include="Assets\FingerRotation5.cs" />
      <Compile Include="Assets\Src\HandController.cs" />
      <Compile Include="Assets\Src\OSH_Finger.cs" />
      <Compile Include="Assets\Src\OSH_Hand.cs" />
