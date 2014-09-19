@@ -34,7 +34,7 @@ public class HandController : MonoBehaviour {
 		{
 			Debug.Log("IOException thrown");
 		}
-		m_currentOrientation = new List<float>{-180, 0, 90};
+		m_currentOrientation = new List<float>{-180, 0, 90, 0};
 	}
 	
 	// Update is called once per frame
@@ -52,7 +52,8 @@ public class HandController : MonoBehaviour {
 			if (m_serialPort.IsOpen) {
 				m_serialPort.Write (m_queryStateCommand);
 				// Reads as roll, pitch, heading, finger1, finger2 ...
-				string[] queryResult = {"-180","0","90","60","60","60","60","60"};//m_serialPort.ReadLine ().Split (' ');
+				//string[] queryResult = {"-180","0","90","60","60","60","60","60"};
+				string[] queryResult = m_serialPort.ReadLine ().Split (' ');
 				m_currentOrientation[0] = float.Parse(queryResult[1]);
 				m_currentOrientation[1] = float.Parse(queryResult[2]);
 				m_currentOrientation[2] = float.Parse(queryResult[0]);
@@ -76,8 +77,8 @@ public class HandController : MonoBehaviour {
 			hand.setRoll(m_currentOrientation[2]);
 			//for (int i = 3; i < Mathf.Min(hand.getFingerCount(), (m_currentOrientation.Count - 2)) ; i++)
 			for (int i = 3; i < 8 ; i++)			{
-				//hand.getFinger(i - 3).setRotateAngle(m_currentOrientation[i]);
-				hand.getFinger(i - 3).setRotateAngle(testAngle);
+				hand.getFinger(i - 3).setRotateAngle(m_currentOrientation[i]);
+				//hand.getFinger(i - 3).setRotateAngle(m_currentOrientation);
 			}
 		}
 	}
